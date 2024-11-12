@@ -31,15 +31,13 @@ neigh.fit(X_train, y_train)
 y_pred = neigh.predict(X_test)
 neigh.score(X_train, y_train)
 neigh.score(X_test, y_test)
-0.8966183574879227
+
 
 
 print("Confusion Matrix: ")
 cm = confusion_matrix(y_test, y_pred)
 cm
-Confusion Matrix:
-array([[701, 34],
-[ 73, 227]], dtype=int64)
+
 mat = ConfusionMatrixDisplay(confusion_matrix = cm)
 mat.plot()
 plt.show()
@@ -67,7 +65,8 @@ SVM.fit(X_train, y_train)
 y_pred = SVM.predict(X_test)
 SVM.score(X_train, y_train)
 SVM.score(X_test, y_test)
-0.9120772946859903
+
+
 print("Confusion Matrix: ")
 cm = confusion_matrix(y_test, y_pred)
 cm
@@ -75,3 +74,5 @@ Confusion Matrix:
 mat = ConfusionMatrixDisplay(confusion_matrix = cm)
 mat.plot()
 plt.show()
+
+print(classification_report(y_test, y_pred))
