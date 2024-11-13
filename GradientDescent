@@ -1,0 +1,27 @@
+import numpy as np
+import matplotlib.pyplot as plt
+def gradient_descent(learning_rate=0.1, initial_x=2, iterations=10):
+  x = initial_x
+  x_values = [x] # To store the values of x for plotting
+  for _ in range(iterations):
+    gradient = 2 * (x + 3)
+    x = x - learning_rate * gradient
+    x_values.append(x)
+  return x, x_values
+# Run gradient descent
+final_x, x_values = gradient_descent(learning_rate=0.1, initial_x=2, iterations=10)
+# Plotting the function and the steps of gradient descent
+x_range = np.linspace(-6, 0, 100) # Range for x
+y_range = (x_range + 3)**2 # Corresponding y values
+plt.figure(figsize=(10, 6))
+plt.plot(x_range, y_range, label='y = (x + 3)^2', color='blue')
+plt.scatter(x_values, (np.array(x_values) + 3)**2, color='red', label='Gradient Des
+plt.title('Gradient Descent on y = (x + 3)^2')
+plt.xlabel('x')
+plt.ylabel('y')
+plt.axhline(0, color='black', lw=0.5, ls='--')
+plt.axvline(-3, color='green', lw=0.5, ls='--', label='Local Minimum (x = -3)')
+plt.legend()
+plt.grid()
+plt.show()
+print(f'Local minimum occurs at x: {final_x}, y: {(final_x + 3) ** 2}')
